@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telematics System Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+    <style>
+        /* Additional styles for the top-bar menu */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header nav {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Additional styles for the form */
+        .form-container {
+            margin: 20px auto;
+            width: 400px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .delete-button {
+            background-color: #f44336;
+        }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <%- include('./partials/header.ejs') %>
+
+    <% const name = 'mario' %>
+
+    <section id="main-content">
+        <!-- Main content of the dashboard -->
+        <div class="dashboard-widgets">
+            <!-- Widgets such as graphs, charts, etc. -->
+        </div>
+    </section>
+
+    <section id="crud-section" class="form-container">
+        <!-- CRUD Form -->
+        <h2>Manage Data - <%= name %></h2>
+        <form id="crud-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="number" name="value" placeholder="Value" required>
+            <textarea name="description" placeholder="Description"></textarea>
+            <select name="status" required>
+                <option value="" disabled selected>Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+            <input type="hidden" id="entry-id" name="entry-id"> <!-- Hidden input for entry ID -->
+            <input type="submit" id="submit-button" value="Create">
+            <button type="button" id="delete-button" class="delete-button" onclick="deleteEntry()">Delete</button>
+        </form>
+    </section>
+
+    <footer>
+        <!-- Footer content -->
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById("crud-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const formData = new FormData(event.target);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            // Send form data to server for processing (You need to implement server-side logic)
+            // For now, let's just log the form data
+            console.log(formObject);
+            
+            // You can implement AJAX request to send the form data to the server
+        });
+
+        // Function to delete an entry (You need to implement this)
+        function deleteEntry() {
+            // You can implement logic to delete an entry
+            // For now, let's just log a message
+            console.log("Entry deleted.");
+        }
+    </script>
+</body>
+</html>

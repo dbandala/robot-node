@@ -1,0 +1,17 @@
+{
+  "name": "robot-node",
+  "version": "1.0.0",
+  "description": "Telematics system for home robot",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Daniel Bandala",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21"
+  }
+}
